@@ -1,25 +1,26 @@
 class Gitwig < Formula
   desc "Rust-based Terminal User Interface (TUI) for Git"
   homepage "https://github.com/tareqmy/gitwig"
-  version "2.3.17"
+  version "2.3.18"
 
   if OS.mac?
     if Hardware::CPU.intel?
       url "https://github.com/tareqmy/gitwig/releases/download/v#{version}/gitwig-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "13412e73e125115f3af5a546a44210e0bec9d2d65c0c70bf1a7752f9882d7162"
+      sha256 "2dd96a30ec5009fe439ebb9152659400275daf99d7f4f191708650d363459d4e"
     elsif Hardware::CPU.arm?
       url "https://github.com/tareqmy/gitwig/releases/download/v#{version}/gitwig-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "9b07efe7ccbb8650bf2c29e991aaa427d57acd7f97b6ea38035e8d2564720759"
+      sha256 "4f077134a34f0d60df96406dcc991916bec03da1c47007c9c269d568cc20e759"
     end
   elsif OS.linux?
     if Hardware::CPU.intel?
       url "https://github.com/tareqmy/gitwig/releases/download/v#{version}/gitwig-v#{version}-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "7f41a04824e53c979c3ec8423f99b100bc1a54c88a0710ce4466aae674a3e1e4"
+      sha256 "5ea4cdc70ae0e7558f60463c0430b6c26dd7534e434fdb1008758fe751640657"
     end
   end
 
   def install
     bin.install "gitwig"
+    bin.install_symlink "gitwig" => "gtg"
   end
 
   test do
